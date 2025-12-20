@@ -4,47 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loterias Brumadinho | Premium VIP Group</title>
+    <meta name="description" content="Bolões oficiais da Caixa, pagamentos via Pix e resultados diários. Entre para o Grupo VIP.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 
     <style>
-        /* --- VARIAVEIS E RESET --- */
+        /* --- VARIÁVEIS & RESET --- */
         :root {
-            /* Palette Dark Luxury */
             --bg-deep: #02120d;
             --bg-gradient: radial-gradient(circle at 50% 0%, #0c3829 0%, #02120d 80%);
-            
-            /* Accents */
             --gold-gradient: linear-gradient(135deg, #dfc37a 0%, #fae2a0 50%, #c49c48 100%);
             --green-glow: #00ff88;
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
             --glass-blur: blur(12px);
-            
-            /* Text */
             --text-main: #ffffff;
             --text-muted: #a0b3ad;
-            
-            /* CTA */
             --cta-gradient: linear-gradient(90deg, #00b09b 0%, #96c93d 100%);
             --cta-shadow: 0 10px 30px rgba(0, 176, 155, 0.3);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html { scroll-behavior: smooth; }
 
         body {
             background: var(--bg-deep);
             background-image: var(--bg-gradient);
             color: var(--text-main);
             font-family: 'Outfit', sans-serif;
-            overflow-x: hidden;
-            min-height: 100vh;
+            overflow-x: hidden; /* Evita scroll lateral indesejado */
+            line-height: 1.5;
         }
 
-        /* --- UTILITARIOS --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        /* --- UTILITÁRIOS --- */
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+            position: relative; 
+            z-index: 2; 
+        }
         
         .text-gradient-gold {
             background: var(--gold-gradient);
@@ -53,25 +55,9 @@
             font-weight: 800;
         }
 
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 40px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(223, 195, 122, 0.3); /* Gold hint */
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        /* --- BOTÕES PREMIUM --- */
+        /* --- BOTÕES --- */
         .btn {
-            padding: 18px 42px;
+            padding: 16px 32px;
             border-radius: 100px;
             font-weight: 700;
             text-transform: uppercase;
@@ -84,6 +70,7 @@
             position: relative;
             overflow: hidden;
             font-size: 0.9rem;
+            cursor: pointer;
         }
 
         .btn-glow {
@@ -93,52 +80,46 @@
             border: none;
         }
 
-        .btn-glow::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-glow:hover::after { left: 100%; }
-        .btn-glow:hover { transform: scale(1.02); box-shadow: 0 15px 40px rgba(0, 176, 155, 0.5); }
+        .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(0, 176, 155, 0.5); }
 
         .btn-gold-outline {
             background: transparent;
             border: 1px solid #dfc37a;
             color: #dfc37a;
         }
+        
         .btn-gold-outline:hover { background: rgba(223, 195, 122, 0.1); color: #fff; border-color: #fff; }
 
-        /* --- BACKGROUND FX --- */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: 0;
+        /* --- GLASS CARDS --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.3s ease;
         }
-        .orb-1 { width: 400px; height: 400px; background: #0c3829; top: -100px; left: -100px; }
-        .orb-2 { width: 300px; height: 300px; background: #1a2e4a; bottom: 10%; right: -50px; }
+        
+        .glass-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
+
+        /* --- BACKGROUND FX --- */
+        .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.3; z-index: 0; pointer-events: none; }
+        .orb-1 { width: 300px; height: 300px; background: #0c3829; top: -50px; left: -100px; }
+        .orb-2 { width: 250px; height: 250px; background: #1a2e4a; bottom: 10%; right: -50px; }
 
         /* --- HEADER --- */
         nav {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            padding: 20px 0;
-            z-index: 1000;
-            transition: 0.3s;
+            position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; z-index: 1000; transition: 0.3s;
         }
         nav.scrolled {
-            background: rgba(2, 18, 13, 0.85);
-            backdrop-filter: blur(15px);
+            background: rgba(2, 18, 13, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--glass-border);
-            padding: 15px 0;
+            padding: 12px 0;
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: white; letter-spacing: -1px; }
+        .logo { font-size: 1.4rem; font-weight: 700; color: white; letter-spacing: -0.5px; }
         .logo span { color: var(--green-glow); }
 
         /* --- HERO --- */
@@ -146,181 +127,197 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 80px;
+            padding-top: 100px; /* Espaço para navbar */
+            padding-bottom: 50px;
             position: relative;
         }
 
+        /* Tipografia Fluida (Responsiva) */
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); /* Mínimo 2.5rem, Ideal Escalável, Máximo 4.5rem */
             line-height: 1.1;
             margin-bottom: 24px;
         }
 
         .hero-badge {
             display: inline-block;
-            padding: 8px 16px;
+            padding: 6px 14px;
             background: rgba(255, 215, 0, 0.1);
             border: 1px solid rgba(255, 215, 0, 0.3);
             border-radius: 50px;
             color: #dfc37a;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 24px;
-            letter-spacing: 2px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
-        /* --- STATS BAR (CONTADOR) --- */
+        /* --- STATS BAR --- */
         .stats-bar {
-            margin-top: 60px;
+            margin-top: 50px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr); /* 3 colunas desktop */
             gap: 20px;
             border-top: 1px solid var(--glass-border);
             padding-top: 30px;
         }
-        .stat-item h4 { font-size: 2.5rem; color: white; margin-bottom: 5px; font-weight: 700; }
-        .stat-item p { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .stat-item h4 { font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 700; color: white; }
+        .stat-item p { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; }
 
         /* --- SECTIONS --- */
-        section { padding: 100px 0; position: relative; }
+        section { padding: 80px 0; position: relative; }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-title h2 { font-size: 3rem; margin-bottom: 15px; }
-        .section-title p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 15px; }
+        .section-title p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
 
-        /* --- CARDS GRID --- */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo Automático */
+            gap: 24px;
         }
+        
+        .feature-icon { font-size: 2rem; margin-bottom: 20px; color: var(--green-glow); }
 
-        .feature-icon {
-            width: 60px; height: 60px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 24px;
-            color: var(--green-glow);
-        }
-
-        /* --- MEGA PRIZE SECTION --- */
+        /* --- MEGA PRIZE --- */
         .mega-section {
-            background: linear-gradient(180deg, rgba(2,18,13,0) 0%, rgba(0,0,0,0.6) 100%), url('https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?q=80&w=2000&auto=format&fit=crop') no-repeat center center/cover;
-            background-attachment: fixed; /* Parallax simples */
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
+            background: linear-gradient(180deg, rgba(2,18,13,0.3) 0%, rgba(0,0,0,0.8) 100%), url('https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax Desktop */
             text-align: center;
+            padding: 100px 0;
         }
-
+        
         .prize-amount {
-            font-size: 5rem;
+            font-size: clamp(3rem, 8vw, 6rem); /* Texto Gigante Responsivo */
             font-family: 'Playfair Display', serif;
             font-style: italic;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 20px 0;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            line-height: 1;
         }
 
-        /* --- STEPS (Timeline) --- */
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        /* --- TIMELINE (RESPONSIVA) --- */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        
+        /* Linha Central Desktop */
         .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%; top: 0; bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, transparent, var(--green-glow), transparent);
+            content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+            width: 2px; background: linear-gradient(to bottom, transparent, var(--green-glow), transparent);
             transform: translateX(-50%);
         }
-        .timeline-item {
-            display: flex;
-            justify-content: flex-end;
-            padding-bottom: 50px;
-            width: 50%;
-            position: relative;
-            padding-right: 40px;
-        }
-        .timeline-item:nth-child(even) {
-            align-self: flex-end;
-            justify-content: flex-start;
-            margin-left: 50%;
-            padding-right: 0;
-            padding-left: 40px;
-        }
-        .timeline-dot {
-            position: absolute;
-            right: -8px; top: 0;
-            width: 16px; height: 16px;
-            background: var(--green-glow);
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--green-glow);
-        }
-        .timeline-item:nth-child(even) .timeline-dot { right: auto; left: -8px; }
         
+        .timeline-item {
+            display: flex; justify-content: flex-end; padding-bottom: 50px; width: 50%; position: relative; padding-right: 40px;
+        }
+        
+        /* Itens pares à direita */
+        .timeline-item:nth-child(even) {
+            align-self: flex-end; justify-content: flex-start; margin-left: 50%; padding-right: 0; padding-left: 40px;
+        }
+        
+        .timeline-dot {
+            position: absolute; right: -9px; top: 0;
+            width: 18px; height: 18px; background: var(--green-glow); border-radius: 50%;
+            box-shadow: 0 0 15px var(--green-glow); z-index: 2;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot { right: auto; left: -9px; }
+
         /* --- FAQ --- */
-        .faq-item {
-            border-bottom: 1px solid var(--glass-border);
-            padding: 24px 0;
-        }
-        .faq-question {
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            color: var(--text-muted);
-            transition: max-height 0.4s ease, padding 0.4s ease;
-        }
-        .faq-item.active .faq-answer { max-height: 150px; padding-top: 16px; }
-        .faq-icon { transition: 0.3s; }
+        .faq-item { border-bottom: 1px solid var(--glass-border); padding: 20px 0; }
+        .faq-question { font-size: 1.1rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { max-height: 0; overflow: hidden; color: var(--text-muted); transition: all 0.4s ease; font-size: 0.95rem; }
+        .faq-item.active .faq-answer { max-height: 200px; padding-top: 15px; }
+        .faq-icon { font-size: 1.5rem; transition: 0.3s; }
         .faq-item.active .faq-icon { transform: rotate(45deg); color: var(--green-glow); }
 
-        /* --- RESPONSIVE --- */
+        /* --- MEDIA QUERIES (O SEGREDO DA RESPONSIVIDADE) --- */
+        
+        /* Tablets e Menores (max 1024px) */
+        @media (max-width: 1024px) {
+            .hero { text-align: center; justify-content: center; }
+            .hero .container > div { margin: 0 auto; } /* Centraliza bloco de texto */
+            
+            /* Ajuste botões no centro */
+            .hero div[style*="display: flex"] {
+                justify-content: center;
+            }
+        }
+
+        /* Mobile (max 768px) */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            .stats-bar { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .timeline::before { left: 20px; }
-            .timeline-item, .timeline-item:nth-child(even) { width: 100%; margin-left: 0; justify-content: flex-start; padding-left: 50px; padding-right: 0; }
-            .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 12px; }
-            .prize-amount { font-size: 3.5rem; }
+            .container { padding: 0 20px; }
+            
+            /* Navbar */
+            .logo { font-size: 1.2rem; }
+            nav .btn { padding: 8px 20px; font-size: 0.8rem; }
+
+            /* Hero */
+            .hero { padding-top: 120px; align-items: flex-start; }
+            .hero-badge { margin-bottom: 15px; }
+            
+            /* Quebra dos Botões Hero */
+            .hero div[style*="display: flex"] {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
+            .hero .btn { width: 100%; } /* Botão largura total no mobile */
+
+            /* Stats Bar vira coluna */
+            .stats-bar {
+                grid-template-columns: 1fr; /* 1 coluna */
+                gap: 30px;
+                text-align: center;
+            }
+            .stat-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
+            .stat-item:last-child { border-bottom: none; }
+
+            /* Timeline Mobile (Linha na esquerda) */
+            .timeline::before { left: 15px; } /* Move linha para esquerda */
+            
+            .timeline-item, 
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                margin-left: 0;
+                padding-left: 50px; /* Espaço para a linha */
+                padding-right: 0;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            
+            .timeline-dot, 
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 6px; /* Centraliza na linha */
+                right: auto;
+            }
+
+            /* Mega Prize Background Fix iOS */
+            .mega-section { background-attachment: scroll; } /* Remove parallax no mobile para evitar bugs */
+        }
+        
+        /* Ajuste para telas muito pequenas (iPhone SE etc) */
+        @media (max-width: 380px) {
+            .hero h1 { font-size: 2.2rem; }
+            .prize-amount { font-size: 2.5rem; }
         }
 
         /* --- WHATSAPP FLOAT --- */
         .wa-float {
-            position: fixed;
-            bottom: 30px; right: 30px;
-            width: 64px; height: 64px;
+            position: fixed; bottom: 25px; right: 25px;
+            width: 60px; height: 60px;
             background: #25D366;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            animation: pulse 2s infinite;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             z-index: 999;
-            color: white;
-            font-size: 32px;
+            transition: transform 0.3s;
         }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+        .wa-float:active { transform: scale(0.9); }
     </style>
 </head>
 <body>
@@ -331,28 +328,28 @@
     <nav id="navbar">
         <div class="container nav-content">
             <div class="logo">LOTERIAS<span>BRUMADINHO</span></div>
-            <a href="https://wa.me/5531998268026" class="btn btn-glow" style="padding: 10px 25px; font-size: 0.8rem;">Grupo VIP</a>
+            <a href="https://wa.me/5531998268026" class="btn btn-glow" style="padding: 10px 20px; font-size: 0.8rem;">Grupo VIP</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container">
-            <div style="max-width: 700px;">
-                <span class="hero-badge">⚡ GRUPO VIP EXCLUSIVO</span>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <span class="hero-badge">⚡ GRUPO VIP OFICIAL</span>
                 <h1>A Sorte Favorece <br> <span class="text-gradient-gold">Quem Se Prepara.</span></h1>
-                <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; line-height: 1.8;">
-                    Participe de bolões oficiais estrategicamente planejados. Junte-se à elite de apostadores da Loterias Brumadinho e maximize suas chances.
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6;">
+                    Entre para a elite de apostadores. Bolões com inteligência matemática, segurança de lotérica física e praticidade digital.
                 </p>
                 
                 <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                     <a href="#grupo-vip" class="btn btn-glow">Entrar no Grupo VIP</a>
-                    <a href="#sobre" class="btn btn-gold-outline">Conhecer Estratégia</a>
+                    <a href="#como-funciona" class="btn btn-gold-outline">Como Funciona</a>
                 </div>
 
                 <div class="stats-bar">
                     <div class="stat-item">
                         <h4 data-target="60">0</h4>
-                        <p>Anos de História</p>
+                        <p>Anos de Tradição</p>
                     </div>
                     <div class="stat-item">
                         <h4 data-target="2000000" data-prefix="R$ " data-format="compact">0</h4>
@@ -360,41 +357,35 @@
                     </div>
                     <div class="stat-item">
                         <h4>100%</h4>
-                        <p>Lotérica Oficial</p>
+                        <p>Seguro & Oficial</p>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div style="position: absolute; right: -10%; top: 50%; transform: translateY(-50%); width: 50%; opacity: 0.1; pointer-events: none;">
-             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#2ECC71" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-4.9C93.5,9.3,82.2,22.9,71.3,34.3C60.4,45.7,49.8,54.9,38.1,62.1C26.4,69.3,13.6,74.5,-0.6,75.5C-14.8,76.6,-28.1,73.4,-40.4,66.5C-52.7,59.6,-64,48.9,-72.1,36.2C-80.2,23.5,-85.1,8.7,-82.9,-5.1C-80.7,-18.9,-71.4,-31.7,-61.1,-41.8C-50.8,-51.9,-39.5,-59.3,-27.8,-68.1C-16.1,-76.9,-4,-87.1,9.4,-88.7C22.8,-90.3,45.6,-83.3,44.7,-76.4Z" transform="translate(100 100)" />
-              </svg>
-        </div>
     </header>
 
-    <section id="sobre">
+    <section>
         <div class="container">
             <div class="section-title">
-                <h2>Por que a Brumadinho?</h2>
-                <p>Não contamos apenas com a sorte. Utilizamos matemática, estatística e experiência para criar bolões de alta performance.</p>
+                <h2>O Diferencial Brumadinho</h2>
+                <p>Muito mais que sorte. Utilizamos estratégia e transparência.</p>
             </div>
             
             <div class="features-grid">
                 <div class="glass-card">
                     <div class="feature-icon">💎</div>
                     <h3>Bolões Premium</h3>
-                    <p style="color: var(--text-muted); margin-top: 10px;">Jogos montados com desdobramentos e fechamentos matemáticos para alavancar probabilidades.</p>
+                    <p style="color: var(--text-muted);">Jogos elaborados com fechamentos matemáticos para aumentar a probabilidade de acerto.</p>
                 </div>
                 <div class="glass-card">
                     <div class="feature-icon">🛡️</div>
-                    <h3>Segurança Total</h3>
-                    <p style="color: var(--text-muted); margin-top: 10px;">Somos uma unidade física credenciada pela Caixa. Seus comprovantes são originais e enviados antes do sorteio.</p>
+                    <h3>Segurança Física</h3>
+                    <p style="color: var(--text-muted);">Somos uma lotérica oficial da Caixa. Você recebe a foto do comprovante original.</p>
                 </div>
                 <div class="glass-card">
                     <div class="feature-icon">🚀</div>
-                    <h3>Praticidade Digital</h3>
-                    <p style="color: var(--text-muted); margin-top: 10px;">Toda a comodidade de comprar pelo WhatsApp e receber seus prêmios via Pix instantaneamente.</p>
+                    <h3>Agilidade Pix</h3>
+                    <p style="color: var(--text-muted);">Sem filas. Pagamento instantâneo e recebimento de prêmios direto na conta.</p>
                 </div>
             </div>
         </div>
@@ -402,35 +393,34 @@
 
     <section class="mega-section">
         <div class="container">
-            <span class="hero-badge" style="background: rgba(255,255,255,0.1); border-color: white; color: white;">MEGA DA VIRADA 2025</span>
-            <h2 style="margin-top: 20px;">Premiação Estimada</h2>
-            <div class="prize-amount">R$ 850 Milhões</div>
-            <p>Os maiores bolões do Brasil estão aqui. Cotas limitadas.</p>
-            <br>
-            <a href="#grupo-vip" class="btn btn-glow" style="transform: scale(1.1);">Garantir Minha Cota</a>
+            <span class="hero-badge" style="background: rgba(255,255,255,0.15); border-color: #fff; color: #fff;">MEGA DA VIRADA 2025</span>
+            <h2 style="margin-top: 20px;">Prêmio Estimado</h2>
+            <div class="prize-amount">R$ 850 Mi</div>
+            <p style="margin-bottom: 30px;">Cotas limitadas disponíveis no Grupo VIP.</p>
+            <a href="#grupo-vip" class="btn btn-glow" style="padding: 20px 40px; font-size: 1rem;">Garantir Minha Cota</a>
         </div>
     </section>
 
-    <section>
+    <section id="como-funciona">
         <div class="container">
             <div class="section-title">
-                <h2>Como Funciona</h2>
+                <h2>Como Participar</h2>
             </div>
             
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="glass-card" style="width: 100%;">
-                        <h3>01. Acesso VIP</h3>
-                        <p style="margin-top: 10px; color: var(--text-muted);">Entre no nosso grupo exclusivo. É lá que liberamos os bolões estrategicamente preparados.</p>
+                        <h3>01. Acesse o Grupo</h3>
+                        <p style="margin-top: 10px; color: var(--text-muted);">Clique no botão e entre no WhatsApp. Liberamos os bolões diariamente lá.</p>
                     </div>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="glass-card" style="width: 100%;">
-                        <h3>02. Escolha & Pix</h3>
-                        <p style="margin-top: 10px; color: var(--text-muted);">Selecione sua cota. O pagamento é via Pix, garantindo reserva imediata sem filas.</p>
+                        <h3>02. Escolha & Pague</h3>
+                        <p style="margin-top: 10px; color: var(--text-muted);">Escolha sua cota estratégica e faça o pagamento via Pix com segurança.</p>
                     </div>
                 </div>
 
@@ -438,65 +428,56 @@
                     <div class="timeline-dot"></div>
                     <div class="glass-card" style="width: 100%;">
                         <h3>03. Comprovante</h3>
-                        <p style="margin-top: 10px; color: var(--text-muted);">Enviamos a foto do bilhete oficial da Caixa. Transparência absoluta do início ao fim.</p>
+                        <p style="margin-top: 10px; color: var(--text-muted);">Enviamos a foto do bilhete oficial impresso. Sua aposta está garantida.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container" style="max-width: 800px; padding-bottom: 150px;">
+    <section class="container" style="max-width: 800px; padding-bottom: 120px;">
         <div class="section-title">
             <h2>Dúvidas Frequentes</h2>
         </div>
         
         <div class="faq-item">
-            <div class="faq-question">A Lotérica Brumadinho é oficial? <span class="faq-icon">+</span></div>
-            <div class="faq-answer">Sim. Somos uma loja física credenciada oficialmente pela Caixa Econômica Federal há mais de 60 anos.</div>
+            <div class="faq-question">É seguro apostar pelo WhatsApp? <span class="faq-icon">+</span></div>
+            <div class="faq-answer">Totalmente. Somos uma empresa física (Lotérica) credenciada. O WhatsApp é apenas um canal de facilidade. O jogo é emitido oficialmente no terminal da Caixa.</div>
         </div>
         
         <div class="faq-item">
-            <div class="faq-question">Como recebo prêmios milionários? <span class="faq-icon">+</span></div>
-            <div class="faq-answer">Prêmios de alto valor devem ser retirados em uma agência da Caixa. Nós oferecemos toda a assessoria e entregamos o bilhete físico original para você realizar o saque com segurança.</div>
+            <div class="faq-question">Como recebo se ganhar? <span class="faq-icon">+</span></div>
+            <div class="faq-answer">Prêmios até o limite da lotérica são transferidos via Pix imediatamente. Prêmios milionários exigem ida à agência da Caixa, e nós prestamos toda a assessoria e entrega do bilhete físico.</div>
         </div>
 
         <div class="faq-item">
-            <div class="faq-question">Posso confiar no pagamento via Pix? <span class="faq-icon">+</span></div>
-            <div class="faq-answer">Sim. O Pix é feito diretamente para a conta da empresa (CNPJ), garantindo a rastreabilidade e segurança da sua transação.</div>
+            <div class="faq-question">Qual o valor das cotas? <span class="faq-icon">+</span></div>
+            <div class="faq-answer">Temos bolões para todos os bolsos, variando de cotas acessíveis a jogos de alto investimento (High Roller). Confira as opções do dia no grupo.</div>
         </div>
     </section>
 
-    <footer style="border-top: 1px solid var(--glass-border); background: #010a07; padding: 60px 0;">
+    <footer style="border-top: 1px solid var(--glass-border); background: #010a07; padding: 40px 0 80px 0;">
         <div class="container text-center">
-            <div class="logo" style="margin-bottom: 20px;">LOTERIAS<span>BRUMADINHO</span></div>
-            <p style="color: var(--text-muted);">CNPJ e Endereço Físico Disponíveis no Grupo</p>
-            <div style="margin: 30px 0; display: flex; justify-content: center; gap: 20px;">
-                <a href="#" style="color: white; opacity: 0.7;">Instagram</a>
-                <a href="#" style="color: white; opacity: 0.7;">Facebook</a>
-                <a href="#" style="color: white; opacity: 0.7;">Email</a>
-            </div>
-            <p style="font-size: 0.8rem; color: #444;">&copy; 2025 Loterias Brumadinho. Jogo responsável +18.</p>
+            <div class="logo" style="margin-bottom: 15px;">LOTERIAS<span>BRUMADINHO</span></div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">CNPJ e Endereço Físico Disponíveis no Grupo VIP</p>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">&copy; 2025 Loterias Brumadinho. Jogo responsável +18.</p>
         </div>
     </footer>
 
     <a href="https://wa.me/5531998268026" class="wa-float" target="_blank" aria-label="Falar no WhatsApp">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.472 14.382C17.119 14.382 16.59 14.206 14.882 13.5C14.706 13.412 14.471 13.412 14.294 13.559L13.118 15.029C13 15.176 12.824 15.206 12.647 15.118C11.176 14.412 9.471 13.235 8.235 11.529C8.059 11.294 8.235 11.118 8.294 11.029L9.412 9.618C9.588 9.382 9.647 9.147 9.471 8.824C8.941 7.765 8.235 6.059 8.059 5.824C7.765 5.412 7.353 5.588 7.176 5.588H6.588C6.235 5.588 5.412 5.706 5.412 7.529C5.412 9.353 6.765 11.118 7.059 11.471C7.353 11.824 9.588 15.647 13.294 17.059C16.941 18.471 17.059 18.059 17.647 18C18.529 17.941 19.412 17.471 19.706 16.706C20 15.941 20 15.294 19.941 15.176C19.882 15.059 19.706 14.941 19.471 14.824L17.472 14.382ZM19.765 3.294C17.588 1.118 14.706 0 11.765 0C5.294 0 0 5.294 0 11.765C0 13.824 0.529 15.824 1.529 17.529L0 23.529L6.176 22C7.882 22.941 9.765 23.471 11.765 23.471C18.235 23.471 23.529 18.176 23.529 11.765C23.529 8.824 22.353 5.941 20.118 3.706L19.765 3.294Z" fill="white"/>
         </svg>
     </a>
 
     <script>
-        // --- NAVBAR SCROLL EFFECT ---
+        // --- NAVBAR SCROLL ---
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            nav.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // --- ANIMATED COUNTERS (NUMBERS) ---
+        // --- CONTADOR DE NÚMEROS (ANIMADO) ---
         const counters = document.querySelectorAll('.stat-item h4');
         const speed = 200;
 
@@ -507,21 +488,21 @@
                 const format = counter.getAttribute('data-format');
                 
                 const updateCount = () => {
-                    const count = +counter.innerText.replace(/\D/g, '');
+                    const count = +counter.innerText.replace(/\D/g, ''); // Remove não-números
                     const inc = target / speed;
 
                     if (count < target) {
                         let currentVal = Math.ceil(count + inc);
-                        // Formatação simples
                         if(format === 'compact' && currentVal > 1000000) {
-                             counter.innerText = prefix + (currentVal / 1000000).toFixed(1) + ' Mi+';
+                             counter.innerText = prefix + (currentVal / 1000000).toFixed(1) + ' Mi';
                         } else {
                              counter.innerText = prefix + currentVal;
                         }
                         setTimeout(updateCount, 20);
                     } else {
+                        // Valor final
                         if(format === 'compact') {
-                             counter.innerText = prefix + (target / 1000000).toFixed(0) + ' Milhões+';
+                             counter.innerText = prefix + (target / 1000000).toFixed(0) + ' Milhões';
                         } else {
                              counter.innerText = prefix + target + '+';
                         }
@@ -531,12 +512,14 @@
             });
         };
 
-        // Trigger Counters when visible
+        // Ativar animação quando aparecer na tela
         let ranOnce = false;
         window.addEventListener('scroll', () => {
             const statsSection = document.querySelector('.stats-bar');
+            if(!statsSection) return;
+            
             const sectionPos = statsSection.getBoundingClientRect().top;
-            const screenPos = window.innerHeight / 1.3;
+            const screenPos = window.innerHeight / 1.2;
 
             if(sectionPos < screenPos && !ranOnce){
                 animateCounters();
@@ -548,17 +531,24 @@
         document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', () => {
                 const parent = item.parentElement;
+                
+                // Fecha outros (opcional, remova se quiser abrir vários)
+                document.querySelectorAll('.faq-item').forEach(child => {
+                    if (child !== parent) child.classList.remove('active');
+                });
+
                 parent.classList.toggle('active');
             });
         });
 
-        // --- SMOOTH SCROLL PARA LINKS ---
+        // --- SCROLL SUAVE PARA LINKS ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
     </script>
