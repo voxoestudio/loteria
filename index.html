@@ -12,7 +12,7 @@
     <style>
         /* --- CORE VARIABLES --- */
         :root {
-            --bg-dark: #050f0c; /* Verde quase preto */
+            --bg-dark: #050f0c;
             --bg-panel: #0b1a15;
             --accent-gold: #d4af37;
             --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #b38728 100%);
@@ -20,8 +20,7 @@
             --text-gray: #b0b0b0;
             --border-light: rgba(255, 255, 255, 0.08);
             --border-gold: rgba(212, 175, 55, 0.3);
-            
-            --glass-bg: rgba(11, 26, 21, 0.6);
+            --glass-bg: rgba(11, 26, 21, 0.85); /* Vidro mais escuro para leitura */
             --glass-blur: blur(16px);
         }
 
@@ -37,6 +36,7 @@
         }
 
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 400; }
+        img { max-width: 100%; display: block; border-radius: 4px; }
         
         /* --- UTILS --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
@@ -65,7 +65,7 @@
             align-items: center;
             justify-content: center;
             padding: 18px 40px;
-            border-radius: 2px; /* Cantos retos = mais elegante/sério */
+            border-radius: 2px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
@@ -82,212 +82,131 @@
             color: #000;
             border: 1px solid transparent;
         }
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-        }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2); }
 
         .btn-outline {
             background: transparent;
             border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
         }
-        .btn-outline:hover {
-            background: rgba(212, 175, 55, 0.1);
-            color: #fff;
-            border-color: #fff;
-        }
+        .btn-outline:hover { background: rgba(212, 175, 55, 0.1); color: #fff; border-color: #fff; }
 
         /* --- SECTIONS --- */
-        section { padding: 100px 0; border-bottom: 1px solid var(--border-light); }
+        section { padding: 100px 0; border-bottom: 1px solid var(--border-light); position: relative; }
 
-        /* --- HERO --- */
+        /* --- HERO (COM FOTO DE FUNDO) --- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: radial-gradient(circle at center, #132b24 0%, #050f0c 100%);
             padding-top: 80px;
+            position: relative;
+            /* FOTO HERO: IMG_1090 */
+            background: linear-gradient(to bottom, rgba(5, 15, 12, 0.85), #050f0c), url('img/IMG_1090.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efeito Parallax */
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 30px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            color: var(--text-gray);
-            font-size: 1.1rem;
-            font-weight: 300;
-        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 30px; }
+        .hero p { max-width: 600px; margin: 0 auto 40px auto; color: #d0d0d0; font-size: 1.1rem; font-weight: 300; }
 
         /* Hero Features Row */
-        .hero-features {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-        }
+        .hero-features { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; flex-wrap: wrap; }
         .h-feat {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            color: var(--text-white);
-            border: 1px solid var(--border-light);
-            padding: 10px 20px;
-            border-radius: 50px;
-            background: rgba(255,255,255,0.02);
+            display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-white);
+            border: 1px solid var(--border-light); padding: 10px 20px; border-radius: 50px;
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(5px);
         }
         .h-feat svg { width: 16px; height: 16px; stroke: var(--accent-gold); }
 
-        /* --- AUTHORITY BAR --- */
-        .authority {
-            background: #081410;
-            padding: 60px 0;
-        }
+        /* --- AUTHORITY BAR (COM FOTO) --- */
+        .authority { background: #081410; padding: 80px 0; }
         .auth-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .auth-content h2 { margin-bottom: 20px; font-size: 2rem; }
-        .auth-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        .stat-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--border-light);
-            padding: 25px;
-            text-align: center;
-        }
-        .stat-card h3 { font-size: 1.8rem; color: var(--accent-gold); margin-bottom: 5px; }
-        .stat-card p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-gray); font-family: 'Outfit'; }
-
-        /* --- WHY US (GRID) --- */
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-        .feature-card {
-            padding: 40px;
-            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
-            border: 1px solid var(--border-light);
-            transition: 0.3s;
-        }
-        .feature-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-5px);
-        }
-        .feature-icon { margin-bottom: 25px; }
-        .feature-icon svg { width: 32px; height: 32px; stroke: var(--accent-gold); }
-        .feature-card h3 { font-size: 1.4rem; margin-bottom: 15px; font-family: 'Outfit'; font-weight: 500; }
-        .feature-card p { font-size: 0.95rem; color: var(--text-gray); }
-
-        /* --- MEGA DA VIRADA (Exclusive Section) --- */
-        .mega-wrapper {
-            background: linear-gradient(to right, #050f0c, #0d2620);
-            border: 1px solid var(--border-gold);
-            padding: 80px 40px;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        /* Glow effect */
-        .mega-wrapper::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        
-        .prize-display {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 20px 0;
-            line-height: 1;
-        }
-        .mega-list {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        .mega-item { display: flex; align-items: center; gap: 10px; color: var(--text-white); }
-        .mega-item svg { stroke: var(--accent-gold); }
-
-        /* --- BENEFITS LIST --- */
-        .benefits-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
         }
-        .benefits-text ul { list-style: none; margin-top: 30px; }
-        .benefits-text li {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-light);
-        }
-        .benefits-text li:last-child { border-bottom: none; }
-        .check-icon { min-width: 20px; color: var(--accent-gold); padding-top: 3px; }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 80px 0 40px 0;
-            font-size: 0.9rem;
-            color: var(--text-gray);
-        }
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        .contact-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .contact-item span { color: var(--text-white); }
         
-        /* --- RESPONSIVE ADJUSTMENTS --- */
+        /* Moldura da Foto de Autoridade */
+        .auth-image-wrapper {
+            position: relative;
+        }
+        .auth-image-wrapper img {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .auth-image-wrapper::before {
+            content: ''; position: absolute; top: -15px; left: -15px; width: 100%; height: 100%;
+            border: 1px solid rgba(212, 175, 55, 0.2); z-index: -1;
+        }
+
+        .auth-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; }
+        .stat-card { background: var(--glass-bg); border: 1px solid var(--border-light); padding: 20px; text-align: center; }
+        .stat-card h3 { font-size: 1.5rem; color: var(--accent-gold); margin-bottom: 5px; }
+        .stat-card p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-gray); }
+
+        /* --- WHY US (GRID) --- */
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; }
+        .feature-card {
+            padding: 40px; background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid var(--border-light); transition: 0.3s;
+        }
+        .feature-card:hover { border-color: var(--border-gold); transform: translateY(-5px); }
+        .feature-icon svg { width: 32px; height: 32px; stroke: var(--accent-gold); }
+
+        /* --- GALERIA DE FOTOS (NOSSA ESTRUTURA) --- */
+        .gallery-section { background: #020a08; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 15px;
+            margin-top: 40px;
+        }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-light); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        
+        /* Layout Grid Complexo */
+        .g-item-1 { grid-column: 1 / 2; grid-row: 1 / 3; } /* Foto alta */
+        .g-item-2 { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .g-item-3 { grid-column: 3 / 4; grid-row: 1 / 2; }
+        .g-item-4 { grid-column: 2 / 4; grid-row: 2 / 3; } /* Foto larga */
+
+        /* --- MEGA DA VIRADA --- */
+        .mega-wrapper {
+            background: linear-gradient(to right, #050f0c, #0d2620); border: 1px solid var(--border-gold);
+            padding: 80px 40px; position: relative; overflow: hidden; text-align: center;
+        }
+        .prize-display {
+            font-size: clamp(3rem, 8vw, 6rem); font-family: 'Playfair Display', serif; font-style: italic;
+            background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin: 20px 0; line-height: 1;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .auth-grid, .benefits-layout { grid-template-columns: 1fr; gap: 40px; }
-            .hero-features { flex-direction: column; gap: 15px; align-items: center; }
+            .auth-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .g-item-1, .g-item-2, .g-item-3, .g-item-4 { grid-column: auto; grid-row: auto; height: 250px; }
+            .hero-features { flex-direction: column; gap: 15px; }
             .h-feat { width: 100%; justify-content: center; }
-            .mega-wrapper { padding: 40px 20px; }
-            .contact-links { flex-direction: column; gap: 30px; }
             .hero { padding-top: 120px; }
         }
 
-        /* SVG Base Styles */
         svg { fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
         
         /* WhatsApp Button */
         .wa-float {
-            position: fixed; bottom: 30px; right: 30px;
-            width: 60px; height: 60px;
-            background: #25d366; color: white;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 999;
-            transition: transform 0.3s;
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #25d366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 999; transition: transform 0.3s;
         }
         .wa-float:hover { transform: scale(1.1); }
     </style>
@@ -322,6 +241,11 @@
 
     <section class="authority">
         <div class="container auth-grid">
+            
+            <div class="auth-image-wrapper">
+                <img src="img/IMG_1089.jpg" alt="Loterias Brumadinho Fachada">
+            </div>
+
             <div class="auth-content">
                 <span class="uppercase-track">Prova de Confiança e Autoridade</span>
                 <h2>60 Anos realizando sonhos.</h2>
@@ -333,29 +257,16 @@
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="#d4af37" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                 </div>
                 <p style="color: var(--text-gray);">Somos uma lotérica física autorizada pela Caixa Econômica Federal, com décadas de história, credibilidade e compromisso com cada apostador.</p>
-                <br>
-                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
-                   <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" stroke="#d4af37"><polyline points="20 6 9 17 4 12"></polyline></svg> Bolões 100% Oficiais</div>
-                   <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" stroke="#d4af37"><polyline points="20 6 9 17 4 12"></polyline></svg> Transparência e confiança comprovadas</div>
-                </div>
-            </div>
-            
-            <div class="auth-stats">
-                <div class="stat-card">
-                    <h3>R$ 2 Mi+</h3>
-                    <p>Prêmios Pagos</p>
-                </div>
-                <div class="stat-card">
-                    <h3>100%</h3>
-                    <p>Autorizada Caixa</p>
-                </div>
-                <div class="stat-card">
-                    <h3>60 Anos</h3>
-                    <p>De História</p>
-                </div>
-                <div class="stat-card">
-                    <h3>24/7</h3>
-                    <p>Suporte Online</p>
+                
+                <div class="auth-stats">
+                    <div class="stat-card">
+                        <h3>R$ 2 Mi+</h3>
+                        <p>Prêmios Pagos</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>100%</h3>
+                        <p>Autorizada Caixa</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -373,34 +284,40 @@
                 <h3>Bolões Estratégicos</h3>
                 <p>Apostas planejadas com inteligência para otimizar suas chances reais de premiação.</p>
             </div>
-            
             <div class="feature-card">
                 <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
                 <h3>100% Seguro</h3>
                 <p>Bolões oficiais da Caixa, feitos por uma lotérica credenciada e regulamentada.</p>
             </div>
-
             <div class="feature-card">
                 <div class="feature-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
                 <h3>Prêmios Pagos</h3>
                 <p>Histórico real de ganhadores e prêmios pagos ao longo de mais de 60 anos.</p>
             </div>
+        </div>
+    </section>
 
-            <div class="feature-card">
-                <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
-                <h3>Pagamento Fácil</h3>
-                <p>Pague via Pix, de forma rápida, prática e segura.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></div>
-                <h3>Resultados Atualizados</h3>
-                <p>Resultados e prêmios divulgados todos os dias, com total transparência.</p>
+    <section class="gallery-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <span class="uppercase-track">Transparência</span>
+                <h2>Nossa Estrutura Física</h2>
             </div>
             
-            <div class="feature-card" style="display: flex; align-items: center; justify-content: center; background: none; border: none;">
-                 <a href="#grupo-vip" class="btn btn-outline" style="width: 100%;">Entrar no Grupo VIP</a>
-            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item g-item-1">
+                    <img src="img/IMG_1088.jpg" alt="Estrutura 1">
+                </div>
+                <div class="gallery-item g-item-2">
+                    <img src="img/IMG_1083.jpg" alt="Estrutura 2">
+                </div>
+                <div class="gallery-item g-item-3">
+                    <img src="img/IMG_1081.jpg" alt="Estrutura 3">
+                </div>
+                <div class="gallery-item g-item-4">
+                    <img src="img/IMG_1087.jpg" alt="Estrutura 4">
+                </div>
+                </div>
         </div>
     </section>
 
@@ -409,26 +326,9 @@
             <div class="mega-wrapper">
                 <span class="uppercase-track" style="color: #fff; opacity: 0.7;">Nossos Bolões</span>
                 <h2 class="gold-text">MEGA DA VIRADA 2025</h2>
-                <p style="margin-top: 20px; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">Premiação Estimada</p>
-                
                 <div class="prize-display">R$ 850 Milhões</div>
-                
-                <p style="max-width: 600px; margin: 0 auto; color: #ccc;">
-                    Confira alguns dos bolões preparados pela equipe da Loterias Brumadinho para a Mega da Virada 2025.
-                </p>
-
-                <div class="mega-list">
-                    <div class="mega-item">
-                        <svg width="20" height="20"><polyline points="20 6 9 17 4 12"></polyline></svg> Cotas Disponíveis
-                    </div>
-                    <div class="mega-item">
-                         <svg width="20" height="20"><polyline points="20 6 9 17 4 12"></polyline></svg> Apostas Planejadas
-                    </div>
-                    <div class="mega-item">
-                         <svg width="20" height="20"><polyline points="20 6 9 17 4 12"></polyline></svg> Compra via WhatsApp
-                    </div>
-                </div>
-
+                <p style="max-width: 600px; margin: 0 auto; color: #ccc;">Confira alguns dos bolões preparados pela equipe da Loterias Brumadinho para a Mega da Virada 2025.</p>
+                <br>
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                     <a href="https://wa.me/5531998268026" class="btn btn-outline">Falar com Atendente</a>
                     <a href="https://wa.me/5531998268026" class="btn btn-gold">Comprar Bolão</a>
@@ -437,37 +337,18 @@
         </div>
     </section>
 
-    <section class="container benefits-layout">
-        <div class="benefits-text">
+    <section class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
+        <div>
             <span class="uppercase-track">Exclusividade</span>
             <h2>Vantagens do Grupo VIP</h2>
             <p style="color: var(--text-gray); margin-top: 10px;">Ao entrar no Grupo VIP da Loterias Brumadinho, você garante acesso prioritário e serviço premium.</p>
-            
-            <ul>
-                <li>
-                    <div class="check-icon"><svg width="20" height="20" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <div>
-                        <strong>Bolões Inteligentes</strong><br>
-                        <span style="font-size: 0.85rem; color: #888;">Estratégias para maximizar ganhos.</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-icon"><svg width="20" height="20" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <div>
-                        <strong>Atendimento Personalizado</strong><br>
-                        <span style="font-size: 0.85rem; color: #888;">Suporte direto com nossa equipe.</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-icon"><svg width="20" height="20" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-                    <div>
-                        <strong>Comodidade Total</strong><br>
-                        <span style="font-size: 0.85rem; color: #888;">Aposte de onde estiver, sem filas.</span>
-                    </div>
-                </li>
+            <ul style="list-style: none; margin-top: 30px; color: var(--text-gray);">
+                <li style="margin-bottom: 15px;">✔️ Bolões Inteligentes</li>
+                <li style="margin-bottom: 15px;">✔️ Atendimento Personalizado</li>
+                <li style="margin-bottom: 15px;">✔️ Resultados em Tempo Real</li>
+                <li style="margin-bottom: 15px;">✔️ Sem filas e sem espera</li>
             </ul>
         </div>
-        
         <div style="background: var(--bg-panel); padding: 40px; border: 1px solid var(--border-light); text-align: center;">
             <h3 style="margin-bottom: 20px;">Segurança Garantida</h3>
             <p style="color: var(--text-gray); margin-bottom: 30px;">Tudo isso com a segurança de uma lotérica física autorizada.</p>
@@ -480,16 +361,9 @@
             <span class="uppercase-track">Sobre Nós</span>
             <h2>Quem Somos</h2>
             <div style="width: 60px; height: 2px; background: var(--accent-gold); margin: 30px auto;"></div>
-            
-            <p style="font-size: 1.1rem; color: var(--text-gray); margin-bottom: 20px;">
-                Somos a <strong>Loterias Brumadinho</strong>, uma empresa credenciada pela Caixa Econômica Federal, comprometida em levar sorte, transparência e confiança a cada apostador.
-            </p>
-            <p style="font-size: 1rem; color: var(--text-gray); margin-bottom: 20px;">
-                Nossa missão é aproximar você do sonho de ser um ganhador, oferecendo bolões oficiais e estratégicos, planejados com inteligência para aumentar suas chances reais de acerto.
-            </p>
-            <p style="color: var(--text-white);">
-                Aqui, você aposta com praticidade, segurança e credibilidade.
-            </p>
+            <p style="font-size: 1.1rem; color: var(--text-gray);">Somos a <strong>Loterias Brumadinho</strong>, uma empresa credenciada pela Caixa Econômica Federal, comprometida em levar sorte, transparência e confiança a cada apostador.</p>
+            <br>
+            <p style="color: var(--text-white);">Aqui, você aposta com praticidade, segurança e credibilidade.</p>
         </div>
     </section>
 
@@ -497,34 +371,18 @@
         <div class="container">
             <h2 style="font-size: 3rem; margin-bottom: 20px;">Sua chance começa agora.</h2>
             <p style="color: var(--text-gray); margin-bottom: 40px;">Entre para o Grupo VIP, participe dos nossos bolões oficiais e esteja mais perto de mudar de vida.</p>
-            
-            <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; font-size: 0.9rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; flex-wrap: wrap;">
-                <span>Seguro</span> • <span>Oficial</span> • <span>Sem Filas</span>
-            </div>
-
             <a href="https://wa.me/5531998268026" id="grupo-vip" class="btn btn-gold" style="padding: 22px 50px; font-size: 1rem;">Entrar no Grupo VIP Agora</a>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; letter-spacing: 1px;">LOTERIAS BRUMADINHO</div>
-            
-            <div class="contact-links">
-                <div class="contact-item">
-                    <svg width="24" height="24" stroke="#d4af37"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span>loteriasbrumadinho@yahoo.com.br</span>
-                </div>
-                <div class="contact-item">
-                    <svg width="24" height="24" stroke="#d4af37"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                    <span>(31) 99826-8026</span>
-                </div>
-                <div class="contact-item">
-                    <svg width="24" height="24" stroke="#d4af37"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    <span>@loteriasbrumadinho</span>
-                </div>
+        <div class="container" style="text-align: center;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; letter-spacing: 1px; margin-bottom: 30px;">LOTERIAS BRUMADINHO</div>
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; color: var(--text-gray);">
+                <span>loteriasbrumadinho@yahoo.com.br</span>
+                <span>(31) 99826-8026</span>
+                <span>@loteriasbrumadinho</span>
             </div>
-
             <p style="opacity: 0.5; margin-top: 40px; border-top: 1px solid var(--border-light); padding-top: 20px;">
                 © 2025 — Loterias Brumadinho. Todos os direitos reservados.
             </p>
@@ -536,7 +394,6 @@
     </a>
 
     <script>
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
